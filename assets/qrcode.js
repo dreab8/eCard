@@ -703,7 +703,7 @@ function genframe(instring)
 
 var wd, ht, qrc;
 function setupqr(){
-    wd = window.screen.availHeight*0.8;
+    wd = window.screen.availHeight*0.5;
     ht = wd;
     var elem = document.getElementById('qrcanv');
     qrc = elem.getContext('2d');

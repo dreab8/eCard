@@ -22,8 +22,7 @@ public class Show extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();		
-		Intent i = createIntent();
-		
+		Intent i = getIntent();
 		String template = readAsset("basic_blue.html");
 		template = replaceParamFromIntent(i, "company", template);
 		template = replaceParamFromIntent(i, "name", template);
@@ -40,18 +39,6 @@ public class Show extends Activity {
 		wv.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 	}
 
-	private Intent createIntent() {
-		Intent i = new Intent("example");
-		i.putExtra("company", "Giago Software Ltd");
-		i.putExtra("role", "Developer");
-		i.putExtra("name", "Luigi Agosti");
-		i.putExtra("phone", "M: +4492830233");
-		i.putExtra("email", "admin@gi-ago.com");
-		i.putExtra("note", "T: @luigiagosti");
-		i.putExtra("qrdata", "https://plus.google.com/102048052961229488268/posts");
-		return i;
-	}
-	
 	private String replaceParamFromIntent(Intent i, String param, String data) {
 		String value = i.getStringExtra(param);
 		if(value == null) {
