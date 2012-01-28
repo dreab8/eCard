@@ -13,4 +13,15 @@ public class Show extends Activity {
 		setContentView(R.layout.show);
 	}
 	
+	@Override
+	protected void onResume() {
+		super.onResume();
+			
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+	
 }
