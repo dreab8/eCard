@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class EcardDatabaseHelper extends SQLiteOpenHelper{
 
-    private static final int VERSION = 3;
+    private static final int VERSION = 4;
     private static final String NAME = "ecard.db";
 
     public EcardDatabaseHelper(Context context) {
@@ -22,7 +22,7 @@ public class EcardDatabaseHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.v("dev", "db population");
+        Log.v("dev", "Upgrading database. Existing contents will be lost. ["+ oldVersion + "]->[" + newVersion + "]");
         db.execSQL("DROP TABLE IF EXISTS " + "ecard");
         onCreate(db);
         db.execSQL("insert into ecard (name) values ('andrea')");

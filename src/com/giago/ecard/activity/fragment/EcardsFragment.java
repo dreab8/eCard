@@ -11,22 +11,21 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 
 public class EcardsFragment extends ListFragment implements LoaderCallbacks<Cursor> {
 
     Uri uri = Uri.parse("content://com.giago.ecard/ecard");
+    
+    String[] from = { "name" };
+    int[] to = { R.id.title };
     
     private SimpleCursorAdapter adapter;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.v("dev", "EcardsFragment.onActivityCreated ");
+
         getLoaderManager().initLoader(0, null, this);
-        
-        String[] from = { "name" };
-        int[] to = { R.id.title };
         
         adapter = new SimpleCursorAdapter(getActivity().getApplicationContext(), R.layout.ecard_item, null, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
 
