@@ -10,9 +10,19 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".ECardActivity"
-            android:label="@string/app_name" >
-            <intent-filter>
+            android:label="@string/show_activity"
+            android:name=".activity.Show"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:label="@string/app_name"
+            android:name=".ECardActivity" >
+            <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,9 +30,9 @@
         </activity>
 
         <provider
-            android:name=".provider.EcardProvider"
             android:authorities="com.giago.ecard"
-            android:exported="false" />
+            android:exported="false"
+            android:name=".provider.EcardProvider" />
     </application>
 
 </manifest>

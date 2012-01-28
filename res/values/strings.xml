@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, ECardActivity!</string>
     <string name="app_name">eCard</string>
+    <string name="show_activity">Show ecard</string>
 
 </resources>
