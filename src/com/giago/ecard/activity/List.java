@@ -1,4 +1,7 @@
-package com.giago.ecard;
+package com.giago.ecard.activity;
+
+import com.giago.ecard.R;
+import com.giago.ecard.R.layout;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -6,7 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
-public class ECardActivity extends Activity {
+public class List extends Activity {
 
     Uri uri = Uri.parse("content://com.giago.ecard/ecard");
 
