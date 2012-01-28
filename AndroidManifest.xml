@@ -23,7 +23,7 @@
         </activity>
         <activity
             android:label="@string/app_name"
-            android:name=".activity.List" >
+            android:name=".activity.Ecards" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 

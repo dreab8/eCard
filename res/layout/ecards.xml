@@ -4,9 +4,9 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
+    <fragment class="com.giago.ecard.activity.fragment.EcardsFragment"
+            android:id="@+id/titles"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
 
 </LinearLayout>
