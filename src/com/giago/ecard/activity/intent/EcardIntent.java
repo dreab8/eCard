@@ -3,7 +3,10 @@ package com.giago.ecard.activity.intent;
 import java.util.Arrays;
 import java.util.List;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.util.Log;
 
 public class EcardIntent {
@@ -15,6 +18,17 @@ public class EcardIntent {
 	
 	public EcardIntent(Intent intent) {
 		this.intent = intent;
+	}
+	
+	public EcardIntent(Cursor cursor, Context context, Class<? extends Activity> clazz) {
+        intent = new Intent(context, clazz);
+        for(String param : EXTRAS) {
+        	addExtra(param, cursor);
+        }
+	}
+
+	public Intent getIntent() {
+		return intent;
 	}
 	
 	public String intentExtrasToString() {
@@ -43,6 +57,14 @@ public class EcardIntent {
 			return;
 		}
 		sb.append(param).append("-").append(value);
+	}
+	
+	private void addExtra(String param, Cursor cursor) {
+	    cursor.moveToFirst();
+		String value = cursor.getString(cursor.getColumnIndex(param));
+		if(value != null) {
+			intent.putExtra(param, value);
+		}
 	}
 	
 }

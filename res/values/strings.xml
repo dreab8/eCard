@@ -4,5 +4,13 @@
     <string name="hello">Hello World, ECardActivity!</string>
     <string name="app_name">ecard</string>
     <string name="show_activity">ecard</string>
+    <string name="add_activity">add ecard</string>
+    <string name="name_hint">name</string>
+    <string name="company_hint">company</string>
+    <string name="phone_hint">phone</string>
+    <string name="email_hint">email</string>
+    <string name="note_hint">note</string>
+    <string name="role_hint">role</string>
+     <string name="add_button">add</string>
 
 </resources>
