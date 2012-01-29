@@ -3,14 +3,15 @@ package com.giago.ecard.utils;
 import java.io.IOException;
 import java.io.InputStream;
 
-import com.giago.ecard.activity.intent.EcardIntent;
-
 import android.content.Context;
 import android.content.Intent;
 
+import com.giago.ecard.activity.intent.EcardIntent;
+
 public class Template {
 	
-	private static final String DEFAULT_TEMPLATE = "default";
+	private static final String TEMPLATES_DIR = "templates/";
+	private static final String DEFAULT_TEMPLATE = "basic_blue";
 	private static final String TEMPLATE_TOKEN = "value";
 	private static final String HTML = ".html";
 	private String templateName;
@@ -25,6 +26,14 @@ public class Template {
 		}
 		this.templateName = value;
 	}
+	
+	public static String[] getTemplatesNames(Context c) {
+		try {
+			return c.getAssets().list(TEMPLATES_DIR);
+		} catch (IOException e) {
+			throw new RuntimeException("Impossible to retrieve testnames : " + e.getMessage());
+		}
+	}
 
 	public String format(Context c) {
 		template = readAssetAsString(c);
@@ -34,7 +43,7 @@ public class Template {
 	
 	private String readAssetAsString(Context c) {
 		try {
-	        InputStream is = c.getAssets().open(templateName + HTML);
+	        InputStream is = c.getAssets().open(TEMPLATES_DIR + templateName + HTML);
 	        int size = is.available();
 	        byte[] buffer = new byte[size];
 	        is.read(buffer);
