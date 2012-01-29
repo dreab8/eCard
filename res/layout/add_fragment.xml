@@ -46,6 +46,10 @@
         android:hint="@string/note_hint"
         android:inputType="text" />
     
+    <Button android:id="@+id/preview_button" android:text="@string/preview_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
+    
     <Button android:id="@+id/add_button" android:text="@string/add_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>

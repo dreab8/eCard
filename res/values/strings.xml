@@ -11,6 +11,7 @@
     <string name="email_hint">email</string>
     <string name="note_hint">note</string>
     <string name="role_hint">role</string>
-     <string name="add_button">add</string>
+    <string name="add_button">add</string>
+    <string name="preview_button">preview</string>
 
 </resources>

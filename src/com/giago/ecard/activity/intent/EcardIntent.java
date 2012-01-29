@@ -3,6 +3,8 @@ package com.giago.ecard.activity.intent;
 import java.util.Arrays;
 import java.util.List;
 
+import com.giago.ecard.activity.Show;
+import com.giago.ecard.activity.ShowAndBeam;
 import com.giago.ecard.service.EcardDao;
 
 import android.app.Activity;
@@ -32,12 +34,16 @@ public class EcardIntent {
 		this.intent = intent;
 	}
 	
-	public EcardIntent(Cursor cursor, Context context, Class<? extends Activity> clazz) {
-        intent = new Intent(context, clazz);
+	public EcardIntent(Cursor cursor, Context context) {
+        intent = new Intent(context, getTheSupportedShowActivityClass());
         for(String param : EXTRAS) {
         	addExtra(param, cursor);
         }
 	}
+	
+	public EcardIntent( Context context) {
+        intent = new Intent(context, getTheSupportedShowActivityClass());
+    }
 
 	public Intent getIntent() {
 		return intent;
@@ -78,6 +84,10 @@ public class EcardIntent {
 		return intentExtrasToString().getBytes();
 	}
 	
+	public void putExtra(String param, String value){
+	    intent.putExtra(param, value);
+	}
+	
 	private void putParamOnContentValues(ContentValues cvs, String param) {
 		String value = intent.getStringExtra(param);
 		if(value == null) {
@@ -101,5 +111,18 @@ public class EcardIntent {
 			intent.putExtra(param, value);
 		}
 	}
+	
+	private Class<? extends Activity> getTheSupportedShowActivityClass() {
+        Class<? extends Activity> clazz = null;
+        try {
+            new android.nfc.NdefMessage("".getBytes());
+            clazz = ShowAndBeam.class;
+        } catch (java.lang.NoClassDefFoundError e) {
+            clazz = Show.class;
+        } catch (Exception e) {
+            clazz = ShowAndBeam.class;
+        }
+        return clazz;
+    }
 
 }
