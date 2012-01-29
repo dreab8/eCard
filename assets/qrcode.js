@@ -715,6 +715,9 @@ function setupqr(){
 }
 
 function doqr(value) {
+	if(value === "") {
+		return;
+	}
 	setupqr();
     qf = genframe(value);
     qrc.lineWidth=1;

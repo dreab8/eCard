@@ -43,9 +43,8 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Cursor cursor = getActivity().getContentResolver().query(
-        		EcardDao.ECARD_URI, null, "_id = " + id,null, null);
-        cursor.moveToFirst();
+        Cursor cursor = adapter.getCursor();
+        cursor.moveToPosition(position);
         Context c = getActivity().getApplicationContext();
         Class<? extends Activity> clazz = getSupportedShowActivityClass();
         EcardIntent ei = new EcardIntent(cursor, c, clazz);
@@ -58,9 +57,8 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
 
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle arg) {
-        String[] projection = { "_id", "name" };
         CursorLoader cursorLoader = new CursorLoader(
-        		getActivity(), EcardDao.ECARD_URI, projection, null, null, null);
+        		getActivity(), EcardDao.ECARD_URI, null, null, null, null);
         return cursorLoader;
     }
 
