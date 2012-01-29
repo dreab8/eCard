@@ -24,9 +24,9 @@ public class Show extends Activity  {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Template template = new Template("basic_blue");
 		Intent i = getIntent();
-		String formatted = template.format(getApplicationContext(), i);
+		Template template = new Template(i);
+		String formatted = template.format(getApplicationContext());
 		initializeWebView(formatted);
 	}
 	

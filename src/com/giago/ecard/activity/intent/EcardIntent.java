@@ -10,6 +10,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 
 public class EcardIntent {
 	
@@ -20,9 +21,10 @@ public class EcardIntent {
 	public static final String PHONE = "phone";
 	public static final String NAME = "name";
 	public static final String COMPANY = "company";
+	public static final String TEMPLATE = "template";
 
 	public static final List<String> EXTRAS = 
-			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA);
+			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA, TEMPLATE);
 	
 	private Intent intent;
 	
@@ -93,9 +95,9 @@ public class EcardIntent {
 	}
 	
 	private void addExtra(String param, Cursor cursor) {
-	    cursor.moveToFirst();
 		String value = cursor.getString(cursor.getColumnIndex(param));
 		if(value != null) {
+			Log.v("dev", "value of param : " + param + " is " + value);
 			intent.putExtra(param, value);
 		}
 	}
