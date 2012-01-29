@@ -1,5 +1,6 @@
 package com.giago.ecard.activity.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -38,10 +39,10 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
         setListAdapter(adapter);
     }
 
-    private void startShowActivity(String company, String role, String name, String phone, String email, String note, String qrdata ) {
+    private void startShowActivity(Context context, String company, String role, String name, String phone, String email, String note, String qrdata ) {
         
         Log.v("dev", "name " + name);
-        Intent intent = new Intent(getActivity().getApplicationContext(), Show.class);
+        Intent intent = new Intent(context, Show.class);
         intent.putExtra("company", company);
         intent.putExtra("role", role);
         intent.putExtra("name", name);
@@ -60,7 +61,8 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Cursor cursor = getActivity().getContentResolver().query(uri, null, "_id = " + id,null, null);
+        Context context = v.getContext();
+        Cursor cursor = context.getContentResolver().query(uri, null, "_id = " + id,null, null);
         cursor.moveToFirst();
         String name = cursor.getString(cursor.getColumnIndex("name"));
         String company = cursor.getString(cursor.getColumnIndex("company"));
@@ -69,7 +71,7 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
         String role = cursor.getString(cursor.getColumnIndex("role"));
         String note = cursor.getString(cursor.getColumnIndex("note"));
         String qrdata = cursor.getString(cursor.getColumnIndex("qrdata"));
-        startShowActivity(company, role, name, phone, email, note, qrdata);
+        startShowActivity(context,company, role, name, phone, email, note, qrdata);
     }
 
     /*
