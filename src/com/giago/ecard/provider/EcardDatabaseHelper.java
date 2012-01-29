@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class EcardDatabaseHelper extends SQLiteOpenHelper{
 
-    private static final int VERSION = 8;
+    private static final int VERSION = 10;
     private static final String NAME = "ecard.db";
 
     public EcardDatabaseHelper(Context context) {

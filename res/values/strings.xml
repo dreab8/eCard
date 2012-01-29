@@ -2,7 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, ECardActivity!</string>
-    <string name="app_name">eCard</string>
-    <string name="show_activity">Show ecard</string>
+    <string name="app_name">ecard</string>
+    <string name="show_activity">ecard</string>
 
 </resources>

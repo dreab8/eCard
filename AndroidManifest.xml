@@ -14,7 +14,6 @@
             android:name=".activity.Ecards" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -24,6 +23,11 @@
             android:name=".activity.Show"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            <intent-filter >
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/com.giago.ecard.beam" />
+            </intent-filter>
         </activity>
 
         <provider
@@ -31,5 +35,7 @@
             android:exported="false"
             android:name=".provider.EcardProvider" />
     </application>
-
+    
+    <uses-permission android:name="android.permission.NFC"/>
+        
 </manifest>
