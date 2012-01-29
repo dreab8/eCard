@@ -3,16 +3,26 @@ package com.giago.ecard.activity.intent;
 import java.util.Arrays;
 import java.util.List;
 
+import com.giago.ecard.service.EcardDao;
+
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.util.Log;
 
 public class EcardIntent {
 	
+	public static final String QRDATA = "qrdata";
+	public static final String ROLE = "role";
+	public static final String NOTE = "note";
+	public static final String EMAIL = "email";
+	public static final String PHONE = "phone";
+	public static final String NAME = "name";
+	public static final String COMPANY = "company";
+
 	public static final List<String> EXTRAS = 
-			Arrays.asList("company", "name", "phone", "email", "note", "role", "qrdata");
+			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA);
 	
 	private Intent intent;
 	
@@ -34,29 +44,52 @@ public class EcardIntent {
 	public String intentExtrasToString() {
 		StringBuilder sb = new StringBuilder();
 		for(String param : EXTRAS) {
-			appendParam(intent, sb, param);
-			sb.append(",");
+			appendParam(sb, param);
 		}
 		sb.deleteCharAt(sb.lastIndexOf(","));
 		return sb.toString();
 	}
 
 	public Intent fromStringToExtras(String valuesPairs) {
-		Log.v("dev", "message : " + valuesPairs);
         for(String paramValuePair : valuesPairs.split(",")) {
-        	Log.v("dev", "pair : " + paramValuePair);
         	String[] paramValue = paramValuePair.split("-");
         	intent.putExtra(paramValue[0], paramValue[1]);
         }
         return intent;
 	}
 	
-	private void appendParam(Intent i, StringBuilder sb, String param) {
-		String value = i.getStringExtra(param);
+	public ContentValues getContentValues() {
+		ContentValues cvs = new ContentValues();
+		for(String param : EXTRAS) {
+			putParamOnContentValues(cvs, param);
+		}
+		return cvs;
+	}
+	
+	public Intent convertToInsertIntent() {
+		Intent newIntent = new Intent(EcardDao.ACTION);
+		String extras = intentExtrasToString();
+		return new EcardIntent(newIntent).fromStringToExtras(extras);
+	}
+	
+	public byte[] intentExtrasToBytes() {
+		return intentExtrasToString().getBytes();
+	}
+	
+	private void putParamOnContentValues(ContentValues cvs, String param) {
+		String value = intent.getStringExtra(param);
 		if(value == null) {
 			return;
 		}
-		sb.append(param).append("-").append(value);
+		cvs.put(param, value);
+	}
+
+	private void appendParam(StringBuilder sb, String param) {
+		String value = intent.getStringExtra(param);
+		if(value == null) {
+			return;
+		}
+		sb.append(param).append("-").append(value).append(",");
 	}
 	
 	private void addExtra(String param, Cursor cursor) {
@@ -66,5 +99,5 @@ public class EcardIntent {
 			intent.putExtra(param, value);
 		}
 	}
-	
+
 }
