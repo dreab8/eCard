@@ -24,9 +24,10 @@ public class EcardIntent {
 	public static final String NAME = "name";
 	public static final String COMPANY = "company";
 	public static final String TEMPLATE = "template";
+	public static final String IS_PERSONAL = "personal";
 
 	public static final List<String> EXTRAS = 
-			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA, TEMPLATE);
+			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA, TEMPLATE, IS_PERSONAL);
 	
 	private Intent intent;
 	
