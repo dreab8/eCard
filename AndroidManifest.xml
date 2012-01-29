@@ -37,6 +37,15 @@
             </intent-filter>
         </activity>
 
+        <service
+            android:name=".service.EcardDao"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter >
+                <action android:name="com.giago.ecard.ECARD_DAO" />
+            </intent-filter>
+        </service>
+            
         <provider
             android:authorities="com.giago.ecard"
             android:exported="false"

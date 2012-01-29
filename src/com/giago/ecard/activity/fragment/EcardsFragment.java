@@ -3,7 +3,6 @@ package com.giago.ecard.activity.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
@@ -18,10 +17,9 @@ import com.giago.ecard.R;
 import com.giago.ecard.activity.Show;
 import com.giago.ecard.activity.ShowAndBeam;
 import com.giago.ecard.activity.intent.EcardIntent;
+import com.giago.ecard.service.EcardDao;
 
 public class EcardsFragment extends ListFragment implements LoaderCallbacks<Cursor> {
-
-    private static final Uri URI = Uri.parse("content://com.giago.ecard/ecard");
 
     private static final String[] FROM = { "name"};
     private static final int[] TO = { R.id.title };
@@ -45,7 +43,8 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Cursor cursor = getActivity().getContentResolver().query(URI, null, "_id = " + id,null, null);
+        Cursor cursor = getActivity().getContentResolver().query(
+        		EcardDao.ECARD_URI, null, "_id = " + id,null, null);
         cursor.moveToFirst();
         Context c = getActivity().getApplicationContext();
         Class<? extends Activity> clazz = getSupportedShowActivityClass();
@@ -60,7 +59,8 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle arg) {
         String[] projection = { "_id", "name" };
-        CursorLoader cursorLoader = new CursorLoader(getActivity(), URI, projection, null, null, null);
+        CursorLoader cursorLoader = new CursorLoader(
+        		getActivity(), EcardDao.ECARD_URI, projection, null, null, null);
         return cursorLoader;
     }
 

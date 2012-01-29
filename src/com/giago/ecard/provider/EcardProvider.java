@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.util.Log;
 
 public class EcardProvider extends ContentProvider {
 
@@ -32,12 +31,12 @@ public class EcardProvider extends ContentProvider {
 
     @Override
     public Uri insert(Uri uri, ContentValues values) {
-        return null;
+    	long id = db.insert(uri.getLastPathSegment(), null, values);
+        return Uri.withAppendedPath(uri, "" + id);
     }
 
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
-        Log.v("dev", "query");
         return db.query(uri.getLastPathSegment(), projection, selection, selectionArgs, null, null, sortOrder);
     }
 
