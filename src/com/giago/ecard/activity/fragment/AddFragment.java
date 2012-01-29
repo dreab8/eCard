@@ -61,6 +61,7 @@ public class AddFragment extends Fragment {
             save.putExtra(EcardIntent.PHONE, phone);
             save.putExtra(EcardIntent.EMAIL, email);
             save.putExtra(EcardIntent.NOTE, note);
+            save.putExtra(EcardIntent.IS_PERSONAL, "1");
 
             applicationContext.startService(save);
             return applicationContext;

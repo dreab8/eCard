@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class EcardDatabaseHelper extends SQLiteOpenHelper{
 
-    private static final int VERSION = 15;
+    private static final int VERSION = 16;
     private static final String NAME = "ecard.db";
 
     public EcardDatabaseHelper(Context context) {
@@ -26,6 +26,7 @@ public class EcardDatabaseHelper extends SQLiteOpenHelper{
         		"note text, " +
         		"role text, " +
         		"template text, " +
+        		"personal int, " +
         		"qrdata text )");
         db.execSQL("insert into ecard (name, company, phone, email) " +
         		"values ('Andrea Boriero', 'novoda' , '+44 (0)7411 372597' , 'dreborier@gmail.com')");
