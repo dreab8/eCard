@@ -35,7 +35,6 @@ public class EcardIntent {
 		StringBuilder sb = new StringBuilder();
 		for(String param : EXTRAS) {
 			appendParam(intent, sb, param);
-			sb.append(",");
 		}
 		sb.deleteCharAt(sb.lastIndexOf(","));
 		return sb.toString();
@@ -56,7 +55,7 @@ public class EcardIntent {
 		if(value == null) {
 			return;
 		}
-		sb.append(param).append("-").append(value);
+		sb.append(param).append("-").append(value).append(",");
 	}
 	
 	private void addExtra(String param, Cursor cursor) {
