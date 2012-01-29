@@ -711,12 +711,14 @@ function setupqr(){
     qrc.canvas.height = ht;
     qrc.fillStyle = '#eee';
     qrc.fillRect(0,0,wd,ht);
-
 }
 
 function doqr(value) {
 	if(value === "") {
 		return;
+	}
+	window.onresize = function(event) {
+	    doqr(value);
 	}
 	setupqr();
     qf = genframe(value);

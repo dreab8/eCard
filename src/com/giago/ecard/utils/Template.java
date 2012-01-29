@@ -10,7 +10,11 @@ import com.giago.ecard.activity.intent.EcardIntent;
 
 public class Template {
 	
-	private static final String TEMPLATES_DIR = "templates/";
+	private static final String FILE_ANDROID_ASSET = "file:///android_asset/";
+	private static final String DIR = "templates/";
+	
+	public static final String TEMPLATE_PATH = FILE_ANDROID_ASSET + DIR;
+	
 	private static final String DEFAULT_TEMPLATE = "basic_blue";
 	private static final String TEMPLATE_TOKEN = "value";
 	private static final String HTML = ".html";
@@ -29,9 +33,9 @@ public class Template {
 	
 	public static String[] getTemplatesNames(Context c) {
 		try {
-			return c.getAssets().list(TEMPLATES_DIR);
+			return c.getAssets().list(DIR);
 		} catch (IOException e) {
-			throw new RuntimeException("Impossible to retrieve testnames : " + e.getMessage());
+			throw new RuntimeException("Problem with templates: " + e.getMessage());
 		}
 	}
 
@@ -43,7 +47,7 @@ public class Template {
 	
 	private String readAssetAsString(Context c) {
 		try {
-	        InputStream is = c.getAssets().open(TEMPLATES_DIR + templateName + HTML);
+	        InputStream is = c.getAssets().open(DIR + templateName + HTML);
 	        int size = is.available();
 	        byte[] buffer = new byte[size];
 	        is.read(buffer);

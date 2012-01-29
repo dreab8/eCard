@@ -13,7 +13,6 @@ public class Show extends Activity  {
 
 	private static final String TEXT_HTML = "text/html";
 	private static final String UTF_8 = "utf-8";
-	private static final String FILE_ANDROID_ASSET = "file:///android_asset/";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +32,8 @@ public class Show extends Activity  {
 	private void initializeWebView(String template) {
 		WebView wv = (WebView)findViewById(R.id.ecardwebview);
 		wv.getSettings().setJavaScriptEnabled(true);
-		wv.loadDataWithBaseURL(FILE_ANDROID_ASSET, 
-				template, TEXT_HTML, UTF_8, FILE_ANDROID_ASSET);
+		String path = Template.TEMPLATE_PATH;
+		wv.loadDataWithBaseURL(path, template, TEXT_HTML, UTF_8, path);
 		wv.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 	}
 
