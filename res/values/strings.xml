@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, ECardActivity!</string>
-    <string name="app_name">ecard</string>
+    <string name="app_name">Ecards</string>
     <string name="show_activity">ecard</string>
     <string name="add_activity">add ecard</string>
     <string name="name_hint">name</string>

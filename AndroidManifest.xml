@@ -12,27 +12,25 @@
         android:name=".Ecard" >
         <activity
             android:label="@string/app_name"
-            android:name=".activity.Dashboard" >
+            android:name=".activity.Dashboard" 
+            android:theme="@android:style/Theme.Light.NoTitleBar">
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:label="@string/app_name"
-            android:name=".activity.Ecards" >
-        </activity>
+            android:name=".activity.Ecards" 
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".activity.Add"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:configChanges="orientation"
             android:label="@string/show_activity"
             android:name=".activity.Show"
             android:screenOrientation="landscape"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        </activity>
-        <activity
-            android:label="@string/add_activity"
-            android:name=".activity.Add" >
-        </activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:configChanges="orientation"
             android:label="@string/show_activity"
