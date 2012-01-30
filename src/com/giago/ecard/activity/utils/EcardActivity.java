@@ -18,6 +18,9 @@ public abstract class EcardActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		tracker = new Tracker(this);
 		trackPageView(tracker);
+		if(!isActionBarEnabled()) {
+			return;
+		}
 		actionBarHelper = ActionBarHelper.createInstance(this);
 		actionBarHelper.onCreate(savedInstanceState);
 	}
@@ -32,23 +35,36 @@ public abstract class EcardActivity extends Activity {
 
 	protected abstract void trackPageView(Tracker tracker);
 	
+	protected boolean isActionBarEnabled() {
+		return true;
+	}
+	
 	protected ActionBarHelper getActionBarHelper() {
         return actionBarHelper;
     }
 	
 	@Override
     public MenuInflater getMenuInflater() {
+		if(!isActionBarEnabled()) {
+			return super.getMenuInflater();
+		}
         return actionBarHelper.getMenuInflater(super.getMenuInflater());
     }
 	
 	@Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        if(!isActionBarEnabled()) {
+			return;
+		}
         actionBarHelper.onPostCreate(savedInstanceState);
     }
 	
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
+		if(!isActionBarEnabled()) {
+			return super.onCreateOptionsMenu(menu);
+		}
         boolean retValue = false;
         retValue |= actionBarHelper.onCreateOptionsMenu(menu);
         retValue |= super.onCreateOptionsMenu(menu);
@@ -56,6 +72,10 @@ public abstract class EcardActivity extends Activity {
     }
 	
 	protected void onTitleChanged(CharSequence title, int color) {
+		if(!isActionBarEnabled()) {
+			super.onTitleChanged(title, color);
+			return;
+		}
         actionBarHelper.onTitleChanged(title, color);
         super.onTitleChanged(title, color);
     }
