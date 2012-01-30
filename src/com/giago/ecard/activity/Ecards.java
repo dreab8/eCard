@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.fragment.EcardsFragment;
+import com.giago.ecard.activity.intent.EcardIntent;
 import com.giago.ecard.activity.utils.EcardFragmentActivity;
 import com.giago.ecard.utils.analytic.Tracker;
 
@@ -16,8 +17,9 @@ public class Ecards extends EcardFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String isPersonal = getIntent().getStringExtra(EcardIntent.IS_PERSONAL);
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-            EcardsFragment list = new EcardsFragment();
+            EcardsFragment list = new EcardsFragment(isPersonal);
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, list).commit();
         }
     }

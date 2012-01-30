@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.giago.ecard.R;
+import com.giago.ecard.activity.intent.EcardIntent;
 import com.giago.ecard.activity.utils.EcardActivity;
 import com.giago.ecard.utils.analytic.Tracker;
 
@@ -31,20 +32,19 @@ public class Dashboard extends EcardActivity {
 		((Button)findViewById(R.id.ecards)).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(Dashboard.this, Ecards.class));
+			    startActivity(EcardIntent.getEcardActivityIntent(Dashboard.this));
 			}
 		});
 		
 		((Button)findViewById(R.id.myecards)).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(Dashboard.this, Ecards.class));
-				//TODO
+			    startActivity(EcardIntent.getPersonalEcardActivityIntent(Dashboard.this));
 			}
+
 		});
 		
 		//TODO scan
-		
 	}
 	
 	@Override

@@ -22,10 +22,17 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     private static final int[] TO = { R.id.title };
 
     private SimpleCursorAdapter adapter;
+    private String isPersonal;
+
+    public EcardsFragment(String isPersonal) {
+        setRetainInstance(true);
+        this.isPersonal = isPersonal;
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        
         getLoaderManager().initLoader(0, null, this);
         adapter = new SimpleCursorAdapter(getActivity().getApplicationContext(), R.layout.ecard_item, null, FROM, TO,
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
@@ -56,7 +63,7 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle arg) {
         CursorLoader cursorLoader = new CursorLoader(
-        		getActivity(), EcardDao.ECARD_URI, null, null, null, null);
+        		getActivity(), EcardDao.ECARD_URI, null, "personal = ?", new String[]{isPersonal}, null);
         return cursorLoader;
     }
 

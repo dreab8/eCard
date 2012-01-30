@@ -3,16 +3,17 @@ package com.giago.ecard.activity.intent;
 import java.util.Arrays;
 import java.util.List;
 
-import com.giago.ecard.activity.Show;
-import com.giago.ecard.activity.ShowAndBeam;
-import com.giago.ecard.service.EcardDao;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
+
+import com.giago.ecard.activity.Ecards;
+import com.giago.ecard.activity.Show;
+import com.giago.ecard.activity.ShowAndBeam;
+import com.giago.ecard.service.EcardDao;
 
 public class EcardIntent {
 	
@@ -34,6 +35,18 @@ public class EcardIntent {
 	public EcardIntent(Intent intent) {
 		this.intent = intent;
 	}
+	
+	public static Intent getPersonalEcardActivityIntent(Context context) {
+        Intent intent = new Intent(context,Ecards.class);
+        intent.putExtra(IS_PERSONAL, "1");
+        return intent;
+    }
+    
+    public static Intent getEcardActivityIntent(Context context) {
+        Intent intent = new Intent(context, Ecards.class);
+        intent.putExtra(IS_PERSONAL, "0");
+        return intent;
+    }
 	
 	public EcardIntent(Cursor cursor, Context context) {
         intent = new Intent(context, getTheSupportedShowActivityClass());
