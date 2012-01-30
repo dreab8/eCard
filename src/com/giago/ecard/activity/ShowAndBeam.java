@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 
 import com.giago.ecard.activity.intent.EcardIntent;
+import com.giago.ecard.utils.analytic.Tracker;
 
 public class ShowAndBeam extends Show implements CreateNdefMessageCallback {
 
@@ -27,6 +28,11 @@ public class ShowAndBeam extends Show implements CreateNdefMessageCallback {
 		if (nfcAdapter != null) {
 			nfcAdapter.setNdefPushMessageCallback(this, this);
 		}
+	}
+	
+	@Override
+	protected void trackPageView(Tracker tracker) {
+		tracker.showAndBeam();
 	}
 
 	@Override
