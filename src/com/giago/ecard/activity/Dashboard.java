@@ -67,7 +67,6 @@ public class Dashboard extends EcardActivity {
             case R.id.menu_search:
                 Toast.makeText(this, "Implement search", Toast.LENGTH_SHORT).show();
                 break;
-
             case R.id.menu_share:
                 Toast.makeText(this, "Implement share", Toast.LENGTH_SHORT).show();
                 break;

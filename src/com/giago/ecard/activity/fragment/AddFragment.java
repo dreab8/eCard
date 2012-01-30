@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import com.giago.ecard.R;
@@ -22,21 +20,7 @@ public class AddFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.add_fragment, container, false);
-        Button preview = (Button) view.findViewById(R.id.preview_button);
-        preview.setOnClickListener(new OnPreviewClickListener());
-        return view;
-    }
-
-    private class OnPreviewClickListener implements OnClickListener {
-        @Override
-        public void onClick(View v) {
-        	View view = getView();
-        	Context applicationContext = view.getContext().getApplicationContext();
-            EcardIntent i = new EcardIntent(applicationContext);
-            populateIntentFromView(view, i);
-            startActivity(i.getIntent());
-        }
+    	return inflater.inflate(R.layout.add_fragment, container, false);
     }
     
     private void populateIntentFromView(View view, EcardIntent ei) {
@@ -53,5 +37,11 @@ public class AddFragment extends Fragment {
     	ei.putExtra(EcardIntent.EMAIL, email);
     	ei.putExtra(EcardIntent.NOTE, note);
     }
+
+	public void preview(Context c) {
+        EcardIntent i = new EcardIntent(c);
+        populateIntentFromView(getView(), i);
+        startActivity(i.getIntent());
+	}
 
 }

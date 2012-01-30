@@ -12,12 +12,15 @@ import com.giago.ecard.utils.analytic.Tracker;
 
 public class Add extends EcardFragmentActivity {
 	
+	private AddFragment addFragment;
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-            AddFragment add = new AddFragment();
-            getSupportFragmentManager().beginTransaction().add(android.R.id.content, add).commit();
+        	addFragment = new AddFragment();
+            getSupportFragmentManager().beginTransaction()
+            	.add(android.R.id.content, addFragment).commit();
         }
     }
 
@@ -29,7 +32,7 @@ public class Add extends EcardFragmentActivity {
 	@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
+        menuInflater.inflate(R.menu.add, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -38,6 +41,9 @@ public class Add extends EcardFragmentActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
             	finish();
+                break;
+            case R.id.menu_next:
+            	addFragment.preview(getApplicationContext());
                 break;
         }
         return super.onOptionsItemSelected(item);

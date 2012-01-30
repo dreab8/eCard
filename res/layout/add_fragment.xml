@@ -4,11 +4,6 @@
     android:layout_height="match_parent"
     android:padding="5dp"
     android:orientation="vertical" >
-
-    <Button
-        style="@style/Input" 
-        android:id="@+id/preview_button" 
-        android:text="@string/preview_button"/>
     
     <EditText
         style="@style/Input"
