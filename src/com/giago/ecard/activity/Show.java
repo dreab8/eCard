@@ -22,6 +22,11 @@ public class Show extends EcardActivity {
 	}
 	
 	@Override
+	protected boolean isActionBarEnabled() {
+		return false;
+	}
+	
+	@Override
 	protected void trackPageView(Tracker tracker) {
 		tracker.show();
 	}

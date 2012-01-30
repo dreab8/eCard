@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.fragment.AddFragment;
@@ -16,7 +15,6 @@ public class Add extends EcardFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
         if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
             AddFragment add = new AddFragment();
             getSupportFragmentManager().beginTransaction().add(android.R.id.content, add).commit();
