@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class EcardDatabaseHelper extends SQLiteOpenHelper{
 
-    private static final int VERSION = 20;
+    private static final int VERSION = 25;
     private static final String NAME = "ecard.db";
 
     public EcardDatabaseHelper(Context context) {
@@ -26,13 +26,13 @@ public class EcardDatabaseHelper extends SQLiteOpenHelper{
         		"note text, " +
         		"role text, " +
         		"template text, " +
-        		"personal int, " +
+        		"personal int default 0, " +
         		"qrdata text )");
         db.execSQL("insert into ecard (name, company, phone, email) " +
         		"values ('Andrea Boriero', 'Novoda' , '+44 (0)7411 372597' , 'dreborier@gmail.com')");
-        db.execSQL("insert into ecard (name, company, phone, email, note, template, qrdata) " +
+        db.execSQL("insert into ecard (name, company, phone, email, note, template, personal, qrdata) " +
         		"values ('Luigi Agosti', 'Novoda', 'M: +44 (0)7983 382560', " +
-        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'basic_red', " +
+        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'basic_red', '1', " +
         			"'https://plus.google.com/102048052961229488268')");
         db.execSQL("insert into ecard (name, company, phone, email, note, template) " +
         		"values ('Veronica Tamorri', 'Giago', 'M: +44 (0)7983 382560', " +
@@ -40,13 +40,13 @@ public class EcardDatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("insert into ecard (name, company, phone, email, note, template) " +
         		"values ('Andrea Borier', 'Giago', 'M: +44 (0)7983 382560', " +
         			"'veronicatamorri@gmail.com', 'T: @veronica', 'background_double_gradient_red_blue')");
-        db.execSQL("insert into ecard (name, company, phone, email, note, template, qrdata) " +
+        db.execSQL("insert into ecard (name, company, phone, email, note, template, personal, qrdata) " +
         		"values ('Luigi Agosti', 'Novoda', 'M: +44 (0)7983 382560', " +
-        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'corners', " +
+        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'corners', '1', " +
         			"'https://plus.google.com/102048052961229488268')");
-        db.execSQL("insert into ecard (name, company, phone, email, note, template, qrdata) " +
+        db.execSQL("insert into ecard (name, company, phone, email, note, template,personal, qrdata) " +
         		"values ('Luigi Agosti', 'Novoda', 'M: +44 (0)7983 382560', " +
-        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'background_black_center_text', " +
+        			"'luigi.agosti@gmail.com', 'T: @luigiagosti', 'background_black_center_text', '1'," +
         			"'https://plus.google.com/102048052961229488268')");
     }
 
