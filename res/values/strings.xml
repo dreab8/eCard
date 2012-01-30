@@ -13,5 +13,11 @@
     <string name="role_hint">role</string>
     <string name="add_button">add</string>
     <string name="preview_button">preview</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_add">add</string>
+    <string name="dashboard_myecards">my ecards</string>
+    <string name="dashboard_ecards">ecards</string>
+    <string name="dashboard_scan">scan</string>
 
 </resources>

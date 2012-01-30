@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <style name="Fill">
+      <item name="android:layout_width">fill_parent</item>
+      <item name="android:layout_height">fill_parent</item>
+   </style>
+   <style name="Fill.VerticalOrientation">
+      <item name="android:orientation">vertical</item>
+   </style>
+   <style name="FillHorizontaly">
+      <item name="android:layout_width">fill_parent</item>
+      <item name="android:layout_height">wrap_content</item>
+   </style>
+   <style name="FillHorizontaly.VerticalOrientation">
+      <item name="android:orientation">vertical</item>
+   </style>
+   <style name="Wrap">
+      <item name="android:layout_width">wrap_content</item>
+      <item name="android:layout_height">wrap_content</item>
+   </style>
+   <style name="Input">
+      <item name="android:paddingLeft">10.0dip</item>
+      <item name="android:paddingTop">10.0dip</item>
+      <item name="android:paddingBottom">10.0dip</item>
+      <item name="android:textSize">20.0dip</item>
+      <item name="android:layout_width">match_parent</item>
+      <item name="android:layout_height">wrap_content</item>
+   </style>
+   <style name="DasboardButton">
+      <item name="android:layout_width">wrap_content</item>
+      <item name="android:layout_height">wrap_content</item>
+   </style>
+</resources>

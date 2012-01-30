@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Fill.VerticalOrientation">
+
+  	<Button 
+  	    style="@style/DasboardButton" 
+  	    android:id="@+id/add"
+  	    android:text="@string/dashboard_add" />
+  
+  	<Button 
+  	    style="@style/DasboardButton" 
+  	    android:id="@+id/ecards"
+  	    android:text="@string/dashboard_ecards" />
+  	
+  	<Button 
+  	    style="@style/DasboardButton" 
+  	    android:id="@+id/myecards"
+  	    android:text="@string/dashboard_myecards" />
+  	
+  	<Button 
+  	    style="@style/DasboardButton"
+  	    android:id="@+id/scan"
+  	    android:text="@string/dashboard_scan" />
+
+</LinearLayout>
