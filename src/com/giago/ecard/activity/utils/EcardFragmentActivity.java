@@ -1,14 +1,14 @@
 package com.giago.ecard.activity.utils;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-
 import com.giago.ecard.utils.actionbar.ActionBarHelper;
 import com.giago.ecard.utils.analytic.Tracker;
 
-public abstract class EcardActivity extends Activity {
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+
+public abstract class EcardFragmentActivity extends FragmentActivity {
 
 	private Tracker tracker;
 	private ActionBarHelper actionBarHelper;
@@ -59,5 +59,4 @@ public abstract class EcardActivity extends Activity {
         actionBarHelper.onTitleChanged(title, color);
         super.onTitleChanged(title, color);
     }
-
 }

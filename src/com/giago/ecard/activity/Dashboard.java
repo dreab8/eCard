@@ -2,9 +2,13 @@ package com.giago.ecard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.utils.EcardActivity;
@@ -48,4 +52,26 @@ public class Dashboard extends EcardActivity {
 		tracker.dashboard();
 	}
 
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                break;
+            case R.id.menu_search:
+                Toast.makeText(this, "Implement search", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.menu_share:
+                Toast.makeText(this, "Implement share", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

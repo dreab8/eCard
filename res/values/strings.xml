@@ -18,4 +18,8 @@
     <string name="dashboard_ecards">ecards</string>
     <string name="dashboard_scan">scan</string>
 
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_share">Share</string>
+        
 </resources>

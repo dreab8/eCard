@@ -17,6 +17,8 @@ public class Tracker {
 		String show = "/show";
 		String showAndBeam = "/showAndBeam";
 		String install = "/install";
+		String add = "/add";
+		String ecards = "/ecards";
 	}
 
 	private static interface Event {
@@ -63,6 +65,14 @@ public class Tracker {
 	public void install() {
 		trackPageView(PageView.install);
 	}
+	
+	public void add() {
+		trackPageView(PageView.add);
+	}
+	
+	public void ecards() {
+		trackPageView(PageView.ecards);
+	}
 
 	// =====================================
 	// Track events
@@ -93,5 +103,7 @@ public class Tracker {
 		}
 		tracker.trackEvent(BUTTON_CATEGORY, CLICK_ACTION, label, position);
 	}
+
+	
 
 }
