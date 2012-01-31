@@ -41,6 +41,7 @@ public class AddFragment extends Fragment {
 	public void preview(Context c) {
         EcardIntent i = new EcardIntent(c);
         populateIntentFromView(getView(), i);
+        i.setPreviewMode();
         startActivity(i.getIntent());
 	}
 

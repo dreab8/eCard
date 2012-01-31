@@ -18,6 +18,11 @@
       <item name="android:layout_width">wrap_content</item>
       <item name="android:layout_height">wrap_content</item>
    </style>
+   
+   <!-- =====================================
+	Specific Views
+	======================================== -->
+	
    <style name="Input">
       <item name="android:paddingLeft">10.0dip</item>
       <item name="android:paddingTop">10.0dip</item>
@@ -26,10 +31,22 @@
       <item name="android:layout_width">match_parent</item>
       <item name="android:layout_height">wrap_content</item>
    </style>
+   
+   <style name="Fill.PreviewButton">
+      <item name="android:layout_weight">1</item>
+      <item name="android:gravity">center</item>
+      <item name="android:textStyle">bold</item>
+      <item name="android:textColor">@android:color/white</item>
+   </style>
+       
    <style name="DasboardButton">
       <item name="android:layout_width">100dp</item>
       <item name="android:layout_height">100dp</item>
    </style>
+   
+   <!-- =====================================
+	App theme
+	======================================== -->
    
    <style name="AppTheme" parent="android:style/Theme.Light">
         <item name="android:windowTitleSize">@dimen/actionbar_compat_height</item>
@@ -43,6 +60,10 @@
         <item name="actionbarCompatProgressIndicatorStyle">@style/ActionBarCompatProgressIndicator</item>
     </style>
 
+    <!-- =====================================
+	Action bar
+	======================================== -->
+       
     <style name="ActionBarCompat">
         <item name="android:background">#eee</item>
     </style>

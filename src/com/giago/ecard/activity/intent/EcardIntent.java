@@ -102,6 +102,17 @@ public class EcardIntent {
 	    intent.putExtra(param, value);
 	}
 	
+	public void setPreviewMode() {
+		intent.putExtra("mode", "preview");
+	}
+	
+	public boolean isPreview() {
+		if(!intent.hasExtra("mode")) {
+			return false;
+		}
+		return "preview".equals(intent.getStringExtra("mode"));
+	}
+	
 	private void putParamOnContentValues(ContentValues cvs, String param) {
 		String value = intent.getStringExtra(param);
 		if(value == null) {

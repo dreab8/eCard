@@ -17,7 +17,12 @@ public class Add extends EcardFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
+    }
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
         	addFragment = new AddFragment();
             getSupportFragmentManager().beginTransaction()
             	.add(android.R.id.content, addFragment).commit();
