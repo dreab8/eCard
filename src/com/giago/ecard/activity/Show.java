@@ -111,7 +111,7 @@ public class Show extends EcardActivity {
 		Template template = new Template(ei.getIntent());
 		String formatted = template.format(getApplicationContext());
 		WebView wv = (WebView)findViewById(R.id.ecardwebview);
-		wv.loadData(formatted, TEXT_HTML, UTF_8);
+		wv.loadDataWithBaseURL("", formatted, TEXT_HTML, UTF_8, "");
 	}
 
 	private void setupTemplatesIfNecessary() {
