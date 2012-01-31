@@ -63,7 +63,9 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
         getLoaderManager().initLoader(0, null, this);
         adapter = new SimpleCursorAdapter(getActivity().getApplicationContext(), R.layout.ecard_item, null, FROM, TO,
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        
         setListAdapter(adapter);
+        
     }
     
     @Override
@@ -101,11 +103,14 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         adapter.swapCursor(cursor);
+        adapter.getCursor().setNotificationUri(getActivity().getContentResolver(), EcardDao.ECARD_URI);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         adapter.swapCursor(null);
+        getLoaderManager().destroyLoader(0);
     }
 
 }

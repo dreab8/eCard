@@ -21,7 +21,9 @@ public class EcardProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-        return db.delete(uri.getLastPathSegment(), selection, selectionArgs);
+        int delete = db.delete(uri.getLastPathSegment(), selection, selectionArgs);
+        getContext().getContentResolver().notifyChange(uri, null);
+        return delete;
     }
 
     @Override
