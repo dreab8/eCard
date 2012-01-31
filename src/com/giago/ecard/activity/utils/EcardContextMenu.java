@@ -1,58 +1,64 @@
 package com.giago.ecard.activity.utils;
 
-import com.giago.ecard.R;
-
 import android.app.Activity;
 import android.content.Context;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.AdapterView;
 
-public abstract class EcardContextMenu {
+import com.giago.ecard.R;
+import com.giago.ecard.service.EcardDao;
 
-	public void registerForContextMenu(Activity activity, View view) {
-		activity.registerForContextMenu(view);
-	}
+public class EcardContextMenu {
+    
+    Context context ;
 
-	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-		Context ac = v.getContext().getApplicationContext();
-	    addMenu(menu, 0, ac.getString(R.string.context_menu_preview));
-	    addMenu(menu, 1, ac.getString(R.string.context_menu_delete));
-	  }
+    public void registerForContextMenu(Activity activity, View view) {
+        activity.registerForContextMenu(view);
+    }
 
-	public boolean onContextItemSelected(MenuItem item) {
-		AdapterView.AdapterContextMenuInfo info;
-		try {
-			info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-		} catch (ClassCastException e) {
-			return false;
-		}
-		long id = info.id;
-		try {
-			int i = item.getItemId();
-			switch (i) {
-			case 0:
-				onPreview(id);
-				return true;
-			case 1:
-				onDetele(id);
-				return true;
-			default:
-				break;
-			}
-			return false;
-		} catch (Throwable t) {
-			return false;
-		}
-	}
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+        Context ac = v.getContext().getApplicationContext();
+        context = v.getContext().getApplicationContext();
+        addMenu(menu, 0, ac.getString(R.string.context_menu_preview));
+        addMenu(menu, 1, ac.getString(R.string.context_menu_delete));
+    }
 
-	private void addMenu(ContextMenu menu, int index, String label) {
-		menu.add(0, index, 0, label);
-	}
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info;
+        try {
+            info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        } catch (ClassCastException e) {
+            return false;
+        }
+        long id = info.id;
+        try {
+            int i = item.getItemId();
+            switch (i) {
+            case 0:
+                onPreview(id);
+                return true;
+            case 1:
+                onDetele(id);
+                return true;
+            default:
+                break;
+            }
+            return false;
+        } catch (Throwable t) {
+            return false;
+        }
+    }
 
-	public abstract void onPreview(long id);
+    private void addMenu(ContextMenu menu, int index, String label) {
+        menu.add(0, index, 0, label);
+    }
 
-	public abstract void onDetele(long id);
+    public  void onPreview(long id){}
+
+    public void onDetele(long id) {
+        context.getContentResolver().delete(EcardDao.ECARD_URI, "_id = ? ", new String[]{"" + id});
+    }
 }

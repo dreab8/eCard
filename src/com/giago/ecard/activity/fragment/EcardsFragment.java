@@ -9,7 +9,6 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -52,18 +51,7 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
 	    adView.loadAd(Ads.getAdsRequest());
 	    adView.setVisibility(View.VISIBLE);
 	    
-	    contextMenu = new EcardContextMenu() {
-			@Override
-			public void onPreview(long id) {
-				Log.v("dev", "preview");
-				//TODO
-			}
-			@Override
-			public void onDetele(long id) {
-				Log.v("dev", "delete");
-				//TODO
-			}
-		};
+	    contextMenu = new EcardContextMenu(); 
 	    registerForContextMenu(view.findViewById(android.R.id.list));
     	return view;
     }
