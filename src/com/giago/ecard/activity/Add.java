@@ -15,8 +15,6 @@ public class Add extends EcardFragmentActivity {
 	
     public static final int ADD = 1;
 	
-	private AddFragment addFragment;
-	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +23,8 @@ public class Add extends EcardFragmentActivity {
     @Override
     protected void onResume() {
     	super.onResume();
-    	if (getSupportFragmentManager().findFragmentById(android.R.id.content) == null) {
-        	addFragment = new AddFragment();
-            getSupportFragmentManager().beginTransaction()
-            	.add(android.R.id.content, addFragment).commit();
+    	if (getAddFragment() == null) {
+            addFragment();
         }
     }
 
@@ -51,7 +47,7 @@ public class Add extends EcardFragmentActivity {
             	finish();
                 break;
             case R.id.menu_next:
-            	addFragment.preview(getApplicationContext());
+            	preview();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -64,4 +60,20 @@ public class Add extends EcardFragmentActivity {
 		}
 	}
 
+    private AddFragment getAddFragment() {
+		return (AddFragment)getSupportFragmentManager().findFragmentById(android.R.id.content);
+	}
+    
+    private void addFragment() {
+		getSupportFragmentManager().beginTransaction()
+			.add(android.R.id.content, new AddFragment()).commit();
+	}
+    
+	private void preview() {
+		AddFragment af = getAddFragment();
+		if(af == null) {
+			return;
+		}
+		af.preview(getApplicationContext());
+	}
 }
