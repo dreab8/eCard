@@ -9,24 +9,43 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.intent.EcardIntent;
 import com.giago.ecard.service.EcardDao;
+import com.giago.ecard.utils.admob.Ads;
+import com.google.ads.AdView;
 
 public class EcardsFragment extends ListFragment implements LoaderCallbacks<Cursor> {
 
-    private static final String[] FROM = { "name"};
+    private static final String DEFAULT_PERSONAL = "0";
+	private static final String[] FROM = { "name"};
     private static final int[] TO = { R.id.title };
 
     private SimpleCursorAdapter adapter;
     private String isPersonal;
-
+    private AdView adView;
+    
+    public EcardsFragment() {
+    	this(DEFAULT_PERSONAL);
+    }
+    
     public EcardsFragment(String isPersonal) {
         setRetainInstance(true);
         this.isPersonal = isPersonal;
+    }
+    
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    	View view = inflater.inflate(R.layout.ecards_fragment, container, false);
+	    adView = (AdView) view.findViewById(R.id.ad);
+	    adView.loadAd(Ads.getAdsRequest());
+	    adView.setVisibility(View.VISIBLE);
+    	return view;
     }
 
     @Override

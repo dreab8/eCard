@@ -1,12 +1,12 @@
 package com.giago.ecard.activity.utils;
 
-import com.giago.ecard.utils.actionbar.ActionBarHelper;
-import com.giago.ecard.utils.analytic.Tracker;
-
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+
+import com.giago.ecard.utils.actionbar.ActionBarHelper;
+import com.giago.ecard.utils.analytic.Tracker;
 
 public abstract class EcardFragmentActivity extends FragmentActivity {
 

@@ -43,7 +43,7 @@ public class Dashboard extends EcardActivity {
 			}
 
 		});
-		
+		setAdmobViewIfEnabled();
 		//TODO scan
 	}
 	

@@ -4,14 +4,19 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 
+import com.giago.ecard.R;
 import com.giago.ecard.utils.actionbar.ActionBarHelper;
+import com.giago.ecard.utils.admob.Ads;
 import com.giago.ecard.utils.analytic.Tracker;
+import com.google.ads.AdView;
 
 public abstract class EcardActivity extends Activity {
 
 	private Tracker tracker;
 	private ActionBarHelper actionBarHelper;
+	private AdView adView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +84,11 @@ public abstract class EcardActivity extends Activity {
         actionBarHelper.onTitleChanged(title, color);
         super.onTitleChanged(title, color);
     }
+	
+	protected void setAdmobViewIfEnabled() {
+	    adView = (AdView) findViewById(R.id.ad);
+	    adView.loadAd(Ads.getAdsRequest());
+	    adView.setVisibility(View.VISIBLE);
+	}
 
 }
