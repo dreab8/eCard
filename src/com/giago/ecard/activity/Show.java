@@ -18,6 +18,9 @@ public class Show extends EcardActivity {
 	private static final String UTF_8 = "utf-8";
 	private boolean previewMode = false;
 	
+	private static String[] templates;
+	private static int currentTemplate;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +40,10 @@ public class Show extends EcardActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Intent i = getIntent();
+		update(getIntent());
+	}
+
+	private void update(Intent i) {
 		checkMode(i);
 		Template template = new Template(i);
 		String formatted = template.format(getApplicationContext());
@@ -55,8 +61,7 @@ public class Show extends EcardActivity {
 	private void initializeWebView(String template) {
 		WebView wv = (WebView)findViewById(R.id.ecardwebview);
 		wv.getSettings().setJavaScriptEnabled(true);
-		String path = Template.TEMPLATE_PATH;
-		wv.loadDataWithBaseURL(path, template, TEXT_HTML, UTF_8, path);
+		wv.loadDataWithBaseURL(Template.TEMPLATE_PATH, template, TEXT_HTML, UTF_8, Template.TEMPLATE_PATH);
 		wv.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 		showPreviewBar();
 	}
@@ -65,17 +70,59 @@ public class Show extends EcardActivity {
 		if(!previewMode) {
 			return;
 		}
+		setupTemplatesIfNecessary();
 		findViewById(R.id.bottombar).setVisibility(View.VISIBLE);
 		findViewById(R.id.save).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View paramView) {
-				//TODO Need to set the correct template
-				//TODO set the type, personal/not personal
-				startService(new EcardIntent(getIntent()).convertToInsertIntent());
+				EcardIntent ei = getEcardIntent();
+				ei.setTemplate(templates[currentTemplate]);
+				startService(ei.convertToInsertIntent());
 				setResult(RESULT_OK, null);
 				finish();
 			}
 		});
+		findViewById(R.id.next).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View paramView) {
+				currentTemplate++;	
+				if(currentTemplate >= templates.length) {
+					currentTemplate = 0;
+				}
+				changeTemplate();
+			}
+		});
+		findViewById(R.id.previous).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View paramView) {
+				currentTemplate--;	
+				if(currentTemplate < 0) {
+					currentTemplate = templates.length-1;
+				}
+				changeTemplate();
+			}
+		});
+	}
+	
+	private void changeTemplate() {
+		EcardIntent ei = getEcardIntent();
+		ei.setTemplate(templates[currentTemplate]);
+		update(ei.getIntent());
+		Template template = new Template(ei.getIntent());
+		String formatted = template.format(getApplicationContext());
+		WebView wv = (WebView)findViewById(R.id.ecardwebview);
+		wv.loadData(formatted, TEXT_HTML, UTF_8);
+	}
+
+	private void setupTemplatesIfNecessary() {
+		if(templates != null) {
+			return;
+		}
+		templates = Template.getTemplatesNames(this);
+	}
+	
+	private EcardIntent getEcardIntent() {
+		return new EcardIntent(getIntent());
 	}
 
 }

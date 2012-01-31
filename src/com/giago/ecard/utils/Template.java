@@ -5,13 +5,14 @@ import java.io.InputStream;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.giago.ecard.activity.intent.EcardIntent;
 
 public class Template {
 	
 	private static final String FILE_ANDROID_ASSET = "file:///android_asset/";
-	private static final String DIR = "templates/";
+	private static final String DIR = "templates";
 	
 	public static final String TEMPLATE_PATH = FILE_ANDROID_ASSET + DIR;
 	
@@ -33,7 +34,11 @@ public class Template {
 	
 	public static String[] getTemplatesNames(Context c) {
 		try {
-			return c.getAssets().list(DIR);
+			String[] templates = c.getAssets().list(DIR); 
+			for(String template : templates) { 
+				Log.v("dev", "template : " + template);
+			}
+			return templates;
 		} catch (IOException e) {
 			throw new RuntimeException("Problem with templates: " + e.getMessage());
 		}
@@ -47,7 +52,10 @@ public class Template {
 	
 	private String readAssetAsString(Context c) {
 		try {
-	        InputStream is = c.getAssets().open(DIR + templateName + HTML);
+			if(!templateName.endsWith(HTML)) {
+				templateName += HTML;
+			}
+	        InputStream is = c.getAssets().open(DIR + "/" + templateName);
 	        int size = is.available();
 	        byte[] buffer = new byte[size];
 	        is.read(buffer);

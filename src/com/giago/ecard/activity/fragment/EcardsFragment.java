@@ -79,12 +79,9 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Context context = getView().getContext().getApplicationContext();
-        
         Cursor cursor = adapter.getCursor();
         cursor.moveToPosition(position);
-        EcardIntent ei = new EcardIntent(cursor, context);
-
-        startActivity(ei.getIntent());
+        startActivity(new EcardIntent(cursor, context).getIntent());
     }
 
     /*

@@ -49,13 +49,13 @@ public class EcardIntent {
     }
 	
 	public EcardIntent(Cursor cursor, Context context) {
-        intent = new Intent(context, getTheSupportedShowActivityClass());
+		this(context);
         for(String param : EXTRAS) {
         	addExtra(param, cursor);
         }
 	}
 	
-	public EcardIntent( Context context) {
+	public EcardIntent(Context context) {
         intent = new Intent(context, getTheSupportedShowActivityClass());
     }
 
@@ -115,6 +115,10 @@ public class EcardIntent {
 		return "preview".equals(intent.getStringExtra("mode"));
 	}
 	
+	public void setTemplate(String string) {
+		intent.putExtra(TEMPLATE, string);
+	}
+	
 	private void putParamOnContentValues(ContentValues cvs, String param) {
 		String value = intent.getStringExtra(param);
 		if(value == null) {
@@ -140,16 +144,16 @@ public class EcardIntent {
 	}
 	
 	private Class<? extends Activity> getTheSupportedShowActivityClass() {
-        Class<? extends Activity> clazz = null;
-        try {
-            new android.nfc.NdefMessage("".getBytes());
-            clazz = ShowAndBeam.class;
-        } catch (java.lang.NoClassDefFoundError e) {
-            clazz = Show.class;
-        } catch (Exception e) {
-            clazz = ShowAndBeam.class;
-        }
-        return clazz;
+		try {
+			Class.forName("android.nfc.NdefMessage");
+			Class.forName("android.nfc.NfcAdapter.CreateNdefMessageCallback");
+			Class.forName("android.nfc.NfcAdapter");
+			Class.forName("android.nfc.NdefRecord");
+			Class.forName("android.nfc.NfcEvent");
+			return ShowAndBeam.class;
+		} catch (ClassNotFoundException e) {
+			return Show.class;
+		}
     }
 
 }
