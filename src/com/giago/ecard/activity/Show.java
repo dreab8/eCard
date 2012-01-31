@@ -3,6 +3,7 @@ package com.giago.ecard.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.webkit.WebView;
 
 import com.giago.ecard.R;
@@ -61,11 +62,20 @@ public class Show extends EcardActivity {
 	}
 
 	private void showPreviewBar() {
-		int visibility = View.GONE;
-		if(previewMode) {
-			visibility = View.VISIBLE;
+		if(!previewMode) {
+			return;
 		}
-		findViewById(R.id.bottombar).setVisibility(visibility);
+		findViewById(R.id.bottombar).setVisibility(View.VISIBLE);
+		findViewById(R.id.save).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View paramView) {
+				//TODO Need to set the correct template
+				//TODO set the type, personal/not personal
+				startService(new EcardIntent(getIntent()).convertToInsertIntent());
+				setResult(RESULT_OK, null);
+				finish();
+			}
+		});
 	}
 
 }

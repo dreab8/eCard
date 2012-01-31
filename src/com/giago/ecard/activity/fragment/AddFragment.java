@@ -9,11 +9,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.giago.ecard.R;
+import com.giago.ecard.activity.Add;
 import com.giago.ecard.activity.intent.EcardIntent;
 
 public class AddFragment extends Fragment {
 
-    @Override
+	@Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
@@ -42,7 +43,7 @@ public class AddFragment extends Fragment {
         EcardIntent i = new EcardIntent(c);
         populateIntentFromView(getView(), i);
         i.setPreviewMode();
-        startActivity(i.getIntent());
+        startActivityForResult(i.getIntent(), Add.ADD);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.giago.ecard.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -11,6 +12,8 @@ import com.giago.ecard.activity.utils.EcardFragmentActivity;
 import com.giago.ecard.utils.analytic.Tracker;
 
 public class Add extends EcardFragmentActivity {
+	
+    public static final int ADD = 1;
 	
 	private AddFragment addFragment;
 	
@@ -53,4 +56,12 @@ public class Add extends EcardFragmentActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
+    @Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == RESULT_OK) {
+			finish();
+		}
+	}
+
 }

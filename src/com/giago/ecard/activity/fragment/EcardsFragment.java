@@ -9,13 +9,17 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.CursorAdapter;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.intent.EcardIntent;
+import com.giago.ecard.activity.utils.EcardContextMenu;
 import com.giago.ecard.service.EcardDao;
 import com.giago.ecard.utils.admob.Ads;
 import com.google.ads.AdView;
@@ -29,6 +33,7 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
     private SimpleCursorAdapter adapter;
     private String isPersonal;
     private AdView adView;
+    private EcardContextMenu contextMenu;
     
     public EcardsFragment() {
     	this(DEFAULT_PERSONAL);
@@ -57,11 +62,18 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         setListAdapter(adapter);
     }
-
+    
     @Override
-    public void onResume() {
-        super.onResume();
-    }
+	public void onCreateContextMenu(ContextMenu menu, View v,
+	    ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		contextMenu.onCreateContextMenu(menu, v, menuInfo);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		return contextMenu.onContextItemSelected(item);
+	}
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {

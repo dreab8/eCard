@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    
+    <!-- Generic -->
     <string name="app_name">Ecards</string>
     <string name="show_activity">ecard</string>
     <string name="add_activity">add ecard</string>
+    
+    <!-- Add fragment -->
     <string name="name_hint">name</string>
     <string name="company_hint">company</string>
     <string name="phone_hint">phone</string>
@@ -10,7 +14,6 @@
     <string name="note_hint">note</string>
     <string name="role_hint">role</string>
     <string name="add_button">add</string>
-    <string name="preview_button">preview</string>
     
     <!-- Dashboard -->
     <string name="dashboard_add">add</string>
@@ -18,9 +21,14 @@
     <string name="dashboard_ecards">ecards</string>
     <string name="dashboard_scan">scan</string>
 
+    <!-- Action Bar Menu -->    
     <string name="menu_refresh">Refresh</string>
     <string name="menu_search">Search</string>
     <string name="menu_share">Share</string>
     <string name="menu_next">Next</string>
+    
+    <!-- Context Menu -->
+    <string name="context_menu_preview">Preview</string>
+    <string name="context_menu_delete">Delete</string>
         
 </resources>

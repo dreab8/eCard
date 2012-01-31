@@ -75,7 +75,9 @@ public class EcardIntent {
 	public Intent fromStringToExtras(String valuesPairs) {
         for(String paramValuePair : valuesPairs.split(",")) {
         	String[] paramValue = paramValuePair.split("-");
-        	intent.putExtra(paramValue[0], paramValue[1]);
+        	if(paramValue.length == 2) {        		
+        		intent.putExtra(paramValue[0], paramValue[1]);
+        	}
         }
         return intent;
 	}
