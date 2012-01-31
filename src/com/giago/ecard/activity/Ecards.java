@@ -35,7 +35,7 @@ public class Ecards extends EcardFragmentActivity {
         menuInflater.inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
