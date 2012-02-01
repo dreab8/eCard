@@ -14,7 +14,7 @@ public class Template {
 	private static final String FILE_ANDROID_ASSET = "file:///android_asset/";
 	private static final String DIR = "templates";
 	
-	public static final String TEMPLATE_PATH = FILE_ANDROID_ASSET + DIR;
+	public static final String TEMPLATE_PATH = FILE_ANDROID_ASSET + DIR + "/";
 	
 	private static final String DEFAULT_TEMPLATE = "basic_blue";
 	private static final String TEMPLATE_TOKEN = "value";

@@ -1,7 +1,7 @@
 package com.giago.ecard.activity.utils;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -12,7 +12,7 @@ import com.giago.ecard.utils.admob.Ads;
 import com.giago.ecard.utils.analytic.Tracker;
 import com.google.ads.AdView;
 
-public abstract class EcardActivity extends Activity {
+public abstract class EcardActivity extends FragmentActivity {
 
 	private Tracker tracker;
 	private ActionBarHelper actionBarHelper;
@@ -76,6 +76,7 @@ public abstract class EcardActivity extends Activity {
         return retValue;
     }
 	
+	@Override
 	protected void onTitleChanged(CharSequence title, int color) {
 		if(!isActionBarEnabled()) {
 			super.onTitleChanged(title, color);
@@ -90,5 +91,4 @@ public abstract class EcardActivity extends Activity {
 	    adView.loadAd(Ads.getAdsRequest());
 	    adView.setVisibility(View.VISIBLE);
 	}
-
 }

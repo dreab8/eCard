@@ -1,4 +1,4 @@
-package com.giago.ecard.activity.utils;
+package com.giago.ecard.activity.menu;
 
 import android.app.Activity;
 import android.content.Context;

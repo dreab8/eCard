@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.giago.ecard"
     android:versionCode="1"
-    android:versionName="1.0-SNAPSHOT" >
+    android:versionName="1.0-SNAPSHOT" 
+    android:installLocation="auto">
 
     <uses-sdk android:minSdkVersion="7" />
 
@@ -11,6 +12,7 @@
         android:label="@string/app_name"
         android:name=".Ecard" 
         android:theme="@style/AppTheme">
+        
         <activity
             android:label="@string/app_name"
             android:name=".activity.Dashboard">
@@ -20,9 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.Ecards" />
+            android:name=".activity.Ecards" >
+        </activity>
         <activity
-            android:name=".activity.Add"/>
+            android:name=".activity.Add"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:configChanges="orientation"
             android:label="@string/show_activity"

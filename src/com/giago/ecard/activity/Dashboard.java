@@ -2,8 +2,7 @@ package com.giago.ecard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,10 +11,12 @@ import android.widget.Toast;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.intent.EcardIntent;
-import com.giago.ecard.activity.utils.EcardActivity;
+import com.giago.ecard.activity.utils.ActionBarEcardActivity;
 import com.giago.ecard.utils.analytic.Tracker;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
-public class Dashboard extends EcardActivity {
+public class Dashboard extends ActionBarEcardActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +44,36 @@ public class Dashboard extends EcardActivity {
 			}
 
 		});
+		
+		((Button)findViewById(R.id.scan)).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				IntentIntegrator.initiateScan(Dashboard.this, getString(R.string.zx_title),
+		                getString(R.string.zx_message), getString(R.string.zx_pos), getString(R.string.zx_neg),
+		                IntentIntegrator.PRODUCT_CODE_TYPES);
+			}
+		});
+
 		setAdmobViewIfEnabled();
 		//TODO scan
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		if (requestCode == IntentIntegrator.BARCODE_REQUEST) {
+			IntentResult scanResult = IntentIntegrator.parseActivityResult(
+					requestCode, resultCode, intent);
+			if (scanResult.getContents() != null) {
+				Log.v("dev", "content of scan : " + scanResult.getContents());
+				//TODO reuse the scan
+			}
+		}
 	}
 	
 	@Override
 	protected void trackPageView(Tracker tracker) {
 		tracker.dashboard();
 	}
-
-	@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -66,9 +82,6 @@ public class Dashboard extends EcardActivity {
                 break;
             case R.id.menu_search:
                 Toast.makeText(this, "Implement search", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menu_share:
-                Toast.makeText(this, "Implement share", Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -31,11 +31,6 @@ public class ShowAndBeam extends Show implements CreateNdefMessageCallback {
 	}
 	
 	@Override
-	protected boolean isActionBarEnabled() {
-		return false;
-	}
-	
-	@Override
 	protected void trackPageView(Tracker tracker) {
 		tracker.showAndBeam();
 	}

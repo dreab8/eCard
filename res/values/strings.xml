@@ -30,5 +30,16 @@
     <!-- Context Menu -->
     <string name="context_menu_preview">Preview</string>
     <string name="context_menu_delete">Delete</string>
-        
+    
+    <!-- Search -->
+    <string name="search_name">Search ecards</string>
+    <string name="search_hint">Search ecards</string>
+    <string name="search_description">Search ecards</string>    
+    
+    <!-- ZXing integration -->
+    <string name="zx_title">Install Barcode Scanner?</string>
+    <string name="zx_message">This application requires Barcode Scanner. Would you like to install it?</string>
+    <string name="zx_pos">Yes</string>
+    <string name="zx_neg">No</string>
+
 </resources>

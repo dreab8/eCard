@@ -19,7 +19,7 @@ import android.widget.ListView;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.intent.EcardIntent;
-import com.giago.ecard.activity.utils.EcardContextMenu;
+import com.giago.ecard.activity.menu.EcardContextMenu;
 import com.giago.ecard.service.EcardDao;
 import com.giago.ecard.utils.admob.Ads;
 import com.google.ads.AdView;
