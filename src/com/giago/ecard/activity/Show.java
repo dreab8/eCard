@@ -76,6 +76,7 @@ public class Show extends EcardActivity {
 			@Override
 			public void onClick(View paramView) {
 				EcardIntent ei = getEcardIntent();
+				ei.setPersonal();
 				ei.setTemplate(templates[currentTemplate]);
 				startService(ei.convertToInsertIntent());
 				setResult(RESULT_OK, null);

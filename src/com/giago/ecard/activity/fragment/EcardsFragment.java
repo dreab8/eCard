@@ -65,7 +65,6 @@ public class EcardsFragment extends ListFragment implements LoaderCallbacks<Curs
                 CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
         
         setListAdapter(adapter);
-        
     }
     
     @Override

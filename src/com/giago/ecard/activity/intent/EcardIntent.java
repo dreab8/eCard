@@ -119,6 +119,10 @@ public class EcardIntent {
 		intent.putExtra(TEMPLATE, string);
 	}
 	
+	public void setPersonal() {
+        intent.putExtra(IS_PERSONAL, "1");
+    }
+	
 	private void putParamOnContentValues(ContentValues cvs, String param) {
 		String value = intent.getStringExtra(param);
 		if(value == null) {
@@ -155,5 +159,6 @@ public class EcardIntent {
 			return Show.class;
 		}
     }
+
 
 }

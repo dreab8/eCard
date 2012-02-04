@@ -2,6 +2,8 @@ package com.giago.ecard.activity.menu;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
@@ -9,11 +11,12 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.giago.ecard.R;
+import com.giago.ecard.activity.intent.EcardIntent;
 import com.giago.ecard.service.EcardDao;
 
 public class EcardContextMenu {
-    
-    Context context ;
+
+    Context context;
 
     public void registerForContextMenu(Activity activity, View view) {
         activity.registerForContextMenu(view);
@@ -48,6 +51,7 @@ public class EcardContextMenu {
             }
             return false;
         } catch (Throwable t) {
+            t.printStackTrace();
             return false;
         }
     }
@@ -56,9 +60,17 @@ public class EcardContextMenu {
         menu.add(0, index, 0, label);
     }
 
-    public  void onPreview(long id){}
+    public void onPreview(long id) {
+        Cursor cursor = context.getContentResolver().query(EcardDao.ECARD_URI, null, "_id = ?",
+                new String[] { "" + id }, null);
+        cursor.moveToFirst();
+        EcardIntent ecardIntent = new EcardIntent(cursor, context);
+        Intent intent = ecardIntent.getIntent();
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 
     public void onDetele(long id) {
-        context.getContentResolver().delete(EcardDao.ECARD_URI, "_id = ? ", new String[]{"" + id});
+        context.getContentResolver().delete(EcardDao.ECARD_URI, "_id = ? ", new String[] { "" + id });
     }
 }
