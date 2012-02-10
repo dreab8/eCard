@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
-    style="@style/Fill.VerticalOrientation">
+    style="@style/Fill.VerticalOrientation"
+    android:gravity="bottom" >
 
-    <com.google.ads.AdView
-        android:id="@+id/ad"
-        style="@style/FillHorizontaly"
-        android:layout_alignParentBottom="true"
-		android:minHeight="50dp"
-        android:visibility="visible"
-        ads:adSize="BANNER"
-        ads:adUnitId="a14f272035b253e"
-        ads:refreshInterval="60"
-        />
-    
-    <TableLayout 
-        style="@style/Fill"
-        android:shrinkColumns="*"  
-    	android:stretchColumns="*"
-    	android:layout_above="@id/ad"
-    	android:padding="20dp">
-        <TableRow 
-            style="@style/Fill"
-            android:gravity="center_horizontal">
-		  	<Button 
-		  	    style="@style/DasboardButton" 
-		  	    android:id="@+id/add"
-		  	    android:text="@string/dashboard_add" />
-		  	<Button 
-		  	    style="@style/DasboardButton" 
-		  	    android:id="@+id/ecards"
-		  	    android:text="@string/dashboard_ecards" />
-        </TableRow>
-        <TableRow 
-            style="@style/Fill"
-            android:gravity="center_horizontal">
-		  	<Button 
-		  	    style="@style/DasboardButton"
-		  	    android:id="@+id/myecards"
-		  	    android:text="@string/dashboard_myecards" />
-		  	<Button 
-		  	    style="@style/DasboardButton"
-		  	    android:id="@+id/scan"
-		  	    android:text="@string/dashboard_scan" />
-        </TableRow>
-    </TableLayout>
-  	
+
+        <TableLayout
+            style="@style/Wrap"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="20dp"
+            android:layout_above="@+id/ad"
+            android:layout_alignParentTop="true"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+
+            <Button
+                android:id="@+id/add_button"
+                style="@style/FillHorizontaly"
+                android:layout_height="100dp"
+                android:text="@string/dashboard_add" />
+
+            <TableRow style="@style/Fill" >
+
+                <Button
+                    android:id="@+id/ecards"
+                    style="@style/DasboardButton"
+                    android:text="@string/dashboard_ecards" />
+
+                <Button
+                    android:id="@+id/scan"
+                    style="@style/DasboardButton"
+                    android:text="@string/dashboard_scan" />
+            </TableRow>
+        </TableLayout>
+
+        <com.google.ads.AdView
+            android:id="@+id/ad"
+            style="@style/FillHorizontaly"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="a14f272035b253e"
+            android:minHeight="50dp"
+            ads:refreshInterval="60"
+            android:visibility="visible" >
+        </com.google.ads.AdView>
 
 </RelativeLayout>

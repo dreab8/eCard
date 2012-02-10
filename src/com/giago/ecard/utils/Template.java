@@ -32,6 +32,7 @@ public class Template {
 		this.templateName = value;
 	}
 	
+	
 	public static String[] getTemplatesNames(Context c) {
 		try {
 			String[] templates = c.getAssets().list(DIR); 

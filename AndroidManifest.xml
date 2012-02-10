@@ -1,79 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto"
     package="com.giago.ecard"
     android:versionCode="1"
-    android:versionName="1.0-SNAPSHOT" 
-    android:installLocation="auto">
+    android:versionName="1.0-SNAPSHOT" >
 
     <uses-sdk android:minSdkVersion="7" />
 
     <application
+        android:name=".Ecard"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:name=".Ecard" 
-        android:theme="@style/AppTheme">
-        
+        android:theme="@style/AppTheme" >
+        <meta-data
+            android:name="android.app.default_searchable"
+            android:value=".activity.SearchActivity" />
+
         <activity
-            android:label="@string/app_name"
-            android:name=".activity.Dashboard">
-            <intent-filter >
+            android:name=".activity.Dashboard"
+            android:label="@string/app_name" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+           
         </activity>
-        <activity
-            android:name=".activity.Ecards" >
+        <activity android:name=".activity.Ecards" >
         </activity>
         <activity
             android:name=".activity.Add"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".activity.Show"
             android:configChanges="orientation"
             android:label="@string/show_activity"
-            android:name=".activity.Show"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
+            android:name=".activity.ShowAndBeam"
             android:configChanges="orientation"
             android:label="@string/show_activity"
-            android:name=".activity.ShowAndBeam"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-            <intent-filter >
+            <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="application/com.giago.ecard.beam" />
             </intent-filter>
         </activity>
-        <activity 
+        <activity
             android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" /> 
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+        <activity android:name=".SearchableActivity"  android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
 
         <service
+            android:name=".service.EcardDao"
             android:enabled="true"
-            android:exported="false"
-            android:name=".service.EcardDao" >
-            <intent-filter >
+            android:exported="false" >
+            <intent-filter>
                 <action android:name="com.giago.ecard.ECARD_DAO" />
             </intent-filter>
         </service>
 
         <provider
+            android:name=".provider.EcardProvider"
             android:authorities="com.giago.ecard"
-            android:exported="false"
-            android:name=".provider.EcardProvider" />
+            android:exported="false" />
 
         <receiver
-            android:exported="true"
-            android:name=".utils.analytic.ReferralReceiver" >
-            <intent-filter >
+            android:name=".utils.analytic.ReferralReceiver"
+            android:exported="true" >
+            <intent-filter>
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
     </application>
 
     <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 

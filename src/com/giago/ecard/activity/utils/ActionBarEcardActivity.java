@@ -1,9 +1,9 @@
 package com.giago.ecard.activity.utils;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.giago.ecard.R;
 
@@ -23,7 +23,8 @@ public abstract class ActionBarEcardActivity extends EcardActivity {
             	finish();
                 break;
             case R.id.menu_search:
-                Toast.makeText(this, "Implement search", Toast.LENGTH_SHORT).show();
+                Log.v("dev", "menu_search");
+                onSearchRequested();
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -16,8 +16,8 @@
     <string name="add_button">add</string>
     
     <!-- Dashboard -->
-    <string name="dashboard_add">add</string>
-    <string name="dashboard_myecards">my ecards</string>
+    <string name="dashboard_add">add your ecard</string>
+    <string name="dashboard_myecards">my personal card</string>
     <string name="dashboard_ecards">ecards</string>
     <string name="dashboard_scan">scan</string>
 
@@ -41,5 +41,7 @@
     <string name="zx_message">This application requires Barcode Scanner. Would you like to install it?</string>
     <string name="zx_pos">Yes</string>
     <string name="zx_neg">No</string>
+    
+    
 
 </resources>

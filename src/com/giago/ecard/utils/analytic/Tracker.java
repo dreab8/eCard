@@ -74,6 +74,11 @@ public class Tracker {
 		trackPageView(PageView.ecards);
 	}
 
+	public void searcheableActivity() {
+        // TODO Auto-generated method stub
+        
+    }
+	
 	// =====================================
 	// Track events
 	// =====================================
@@ -103,7 +108,5 @@ public class Tracker {
 		}
 		tracker.trackEvent(BUTTON_CATEGORY, CLICK_ACTION, label, position);
 	}
-
-	
 
 }

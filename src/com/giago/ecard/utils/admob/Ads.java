@@ -15,6 +15,8 @@ public class Ads {
 		r.addTestDevice("D70EBE9ACE1685D1B8831F6543364338");
 		r.addTestDevice("7B7C513F195CC6D32AEB0F0D39905A96");
 		r.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB");
+		r.addTestDevice("CF95DC53F383F9A836FD749F3EF439CD");
+		r.addTestDevice("9774BB5E1003BC5B3C01570F6615CA4B");
 		//add here new test devices
 		
 		return r;
