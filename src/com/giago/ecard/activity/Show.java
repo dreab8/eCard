@@ -41,11 +41,14 @@ public class Show extends EcardActivity {
 	protected void onResume() {
 		super.onResume();
 		update(getIntent());
+		
 	}
 
 	private void update(Intent i) {
 		checkMode(i);
-		Template template = new Template(i);
+		EcardIntent ecardIntent = getEcardIntent();
+		ecardIntent.setTemplate(Template.getTemplatesNames(this)[currentTemplate]);
+		Template template = new Template(ecardIntent.getIntent());
 		String formatted = template.format(getApplicationContext());
 		initializeWebView(formatted);
 	}

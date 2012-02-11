@@ -26,6 +26,7 @@ public class Template {
 	public Template(Intent intent) {
 		this.intent = intent;
 		String value = intent.getStringExtra(EcardIntent.TEMPLATE);
+		
 		if(value == null) {
 			value = DEFAULT_TEMPLATE;
 		}
