@@ -50,14 +50,15 @@ public class Dashboard extends ActionBarEcardActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Cursor cursor = getContentResolver()
+        final Cursor cursor = getContentResolver()
                 .query(EcardDao.ECARD_URI, null, "personal = ?", new String[] { "1" }, null);
         if (cursor.getCount() > 0) {
             add.setText(R.string.dashboard_myecards);
             add.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(EcardIntent.getPersonalEcardActivityIntent(Dashboard.this));
+                    cursor.moveToFirst();
+                    startActivity(new EcardIntent(cursor, Dashboard.this).getIntent());
                 }
             });
            
