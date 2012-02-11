@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+    style="@style/Fill.VerticalOrientation"
+    android:layout_width="match_parent"
+    android:gravity="bottom" >
+
+    <com.google.ads.AdView
+        android:id="@+id/ad"
+        style="@style/FillHorizontaly"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="a14f272035b253e"
+        android:minHeight="50dp"
+        ads:refreshInterval="60"
+        android:visibility="visible" >
+    </com.google.ads.AdView>
+
+    <LinearLayout
+        style="@style/Fill"
+        android:layout_above="@+id/ad"
+        android:weightSum="1.0" >
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0.5"
+            android:text="@string/dashboard_add" />
+
+        <TableLayout
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="0.5"
+              android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" >
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_weight="1" >
+
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/ecards"
+                    style="@style/Fill"
+                    android:layout_width="match_parent"
+                    android:text="@string/dashboard_ecards" />
+
+            </TableRow>
+
+            <TableRow android:layout_weight="1" >
+
+                <Button android:layout_weight="1"
+                    android:id="@+id/scan"
+                    style="@style/Fill"
+                    android:text="@string/dashboard_scan" />
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

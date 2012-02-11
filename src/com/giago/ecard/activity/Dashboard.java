@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView;
 import android.widget.Button;
 
 import com.giago.ecard.R;
 import com.giago.ecard.activity.intent.EcardIntent;
 import com.giago.ecard.activity.utils.ActionBarEcardActivity;
 import com.giago.ecard.service.EcardDao;
-import com.giago.ecard.utils.Template;
 import com.giago.ecard.utils.analytic.Tracker;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -21,8 +19,6 @@ import com.google.zxing.integration.android.IntentResult;
 public class Dashboard extends ActionBarEcardActivity {
 
     Button add;
-    private static final String TEXT_HTML = "text/html";
-    private static final String UTF_8 = "utf-8";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

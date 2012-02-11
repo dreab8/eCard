@@ -18,6 +18,9 @@
       <item name="android:layout_width">wrap_content</item>
       <item name="android:layout_height">wrap_content</item>
    </style>
+    <style name="Wrap.VerticalOrientation">
+       <item name="android:orientation">vertical</item>
+   </style>
    
    <!-- =====================================
 	Specific Views
@@ -42,6 +45,11 @@
    <style name="DasboardButton">
       <item name="android:layout_width">100dp</item>
       <item name="android:layout_height">100dp</item>
+   </style>
+   
+   <style name="DasboardButtonLand">
+      <item name="android:layout_width">80dp</item>
+      <item name="android:layout_height">80dp</item>
    </style>
    
    <!-- =====================================
