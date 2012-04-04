@@ -82,6 +82,7 @@ public class Show extends EcardActivity {
                     getApplicationContext().getContentResolver().delete(EcardDao.ECARD_URI, "_id = ? ",
                             new String[] { "" + id });
                     startActivity(EcardIntent.getEcardActivityIntent(Show.this));
+                    finish();
                 }
             });
 
