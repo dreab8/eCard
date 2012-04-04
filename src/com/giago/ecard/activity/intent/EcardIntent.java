@@ -17,6 +17,7 @@ import com.giago.ecard.service.EcardDao;
 
 public class EcardIntent {
 	
+    public static final String ID = "_id";
 	public static final String QRDATA = "qrdata";
 	public static final String ROLE = "role";
 	public static final String NOTE = "note";
@@ -28,7 +29,7 @@ public class EcardIntent {
 	public static final String IS_PERSONAL = "personal";
 
 	public static final List<String> EXTRAS = 
-			Arrays.asList(COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA, TEMPLATE, IS_PERSONAL);
+			Arrays.asList(ID,COMPANY, NAME, PHONE, EMAIL, NOTE, ROLE, QRDATA, TEMPLATE, IS_PERSONAL);
 	
 	private Intent intent;
 	

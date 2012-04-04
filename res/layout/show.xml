@@ -1,27 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:a="http://schemas.android.com/apk/res/android"
-    style="@style/Fill.VerticalOrientation">
-  	<WebView
-  	    style="@style/Fill"
-		a:id="@+id/ecardwebview"/>
-  	<LinearLayout
-		style="@style/FillHorizontaly"
-		a:id="@+id/bottombar" 
-		a:layout_alignParentBottom="true"
-		a:minHeight="50dip"
-		a:background="#80000000"
-		a:visibility="gone">
-	    <TextView
-	       style="@style/Fill.PreviewButton"
-	       a:id="@+id/previous"
-	       a:text="previous"/>
-	    <TextView
-	       style="@style/Fill.PreviewButton"
-	       a:id="@+id/save"
-	       a:text="save" />
-	    <TextView
-	       style="@style/Fill.PreviewButton"
-	       a:id="@+id/next"
-	       a:text="next" />
-     </LinearLayout>
+    style="@style/Fill.VerticalOrientation" >
+
+    <WebView
+        a:id="@+id/ecardwebview"
+        style="@style/Fill" />
+
+    <LinearLayout
+        a:id="@+id/bottombar"
+        style="@style/FillHorizontaly"
+        a:layout_alignParentBottom="true"
+        a:background="#80000000"
+        a:minHeight="50dip"
+        a:visibility="gone" >
+
+        <TextView
+            a:id="@+id/previous"
+            style="@style/Fill.PreviewButton"
+            a:text="previous" 
+            a:visibility="gone"/>
+
+        <TextView
+            a:id="@+id/delete"
+            style="@style/Fill.PreviewButton"
+            a:text="delete"
+            a:visibility="gone" />
+
+        <TextView
+            a:id="@+id/save"
+            style="@style/Fill.PreviewButton"
+            a:text="save"
+            a:visibility="gone" />
+        
+         <TextView
+            a:id="@+id/edit"
+            style="@style/Fill.PreviewButton"
+            a:text="edit"
+            a:visibility="gone" />
+        
+
+        <TextView
+            a:id="@+id/next"
+            style="@style/Fill.PreviewButton"
+            a:text="next"
+            a:visibility="gone" />
+    </LinearLayout>
+
 </RelativeLayout>
